@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iyiola Adedamola Richard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hind+Madurai:wght@300;400;500;600;700&family=Poppins:ital,wght@0,400;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Share+Tech&display=swap');
+        body {
+            font-family: Poppins, Arial, sans-serif;
+            background: linear-gradient(45deg, rgb(37, 0, 37)5%, rgb(156, 0, 204), rgb(51, 0, 51))5%;
+            height: 97.5vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-size: 200%;
+            background-position: 0%;
+            animation: move 30s ease-in-out infinite;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff98;
+            transition: .3s ease-in-out;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+
+        @keyframes move {
+            50% {
+                background-position: 100%;
+            }
+
+            100% {
+                background-position: 0%;
+            }
+            
+        }
+        
+        .cards {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cards .card {
+            position: absolute;
+            width: 70%;
+            min-height: 210px;
+            border-radius: 10px;
+            backdrop-filter: blur(28px);
+            padding: 10px;
+            display: none;
+            gap: 28px;
+            box-shadow: 1px 1px 10px #ffabea8a;
+            background-color: #00000014;
+        }
+
+        .cards .card.active {
+            z-index: 1;
+            display: flex;
+            transform: rotateX(30deg);
+            opacity: .7;
+            filter: blur(.5px);
+            animation: effect001 .7s ease-in-out 1 forwards;
+        }
+
+        @keyframes effect001 {
+            to {
+                transform: rotateX(0deg);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        /* .cards .card */
+        
+        .cards .card .image-edge {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .cards .card .image-edge img {
+            width: 100%;
+        }
+        
+        .cards .main-navigation {
+            position: absolute;
+            top: 7%;
+            z-index: 10;
+        }
+
+        .cards .main-navigation ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .cards .main-navigation ul li {
+            background-color: #bebebe42;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .cards .card .show .icon {
+            display: flex;
+            width: 70px;
+        }
+
+        .cards .card .show .icon img {
+            width: 100%;
+        }
+        
+        .cards .card .art .icon {
+            display: flex;
+            width: 105px;
+            gap: 17px;
+        }
+
+        .cards .card .art .icon img {
+            width: 100%;
+        }
+        
+        .cards .card .first .icon {
+            display: flex;
+            width: 105px;
+            gap: 17px;
+        }
+
+        .cards .card .first .icon img {
+            width: 100%;
+        }
+
+        .link {
+            opacity: .8;
+        }
+
+        .copybtn {
+            border: 0;
+            border-radius: 5px;
+            padding: 7px;
+            background-color: #aaaaaa50;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    about me : picture, name, short note
+    skills: programming = languages - html, css, JavaScript, python
+        art: animation - 2d, 3d
+    project: check out GitHub
+            art images
+
+    reachout: email
+    -->
+    <div class="cards">
+
+        <div class="card active">
+            <div class="first">
+                <div class="image-edge">
+                    <img src="./Me 003.jpg" alt="" class="image">
+                </div>
+                <h3>Iyiola Adedamola Richard</h3>
+            </div>
+            <div class="second">
+                <h1>What i do?</h1>
+                <p>I am a programmer(AI dev, desktop app dev, web app dev, mobile app dev), a concept creator, and an animator.</p>
+            </div>
+        </div>
+
+        <div class="card" style="gap: 70px;">
+            <div class="prog">
+                <h3>Programming</h3>
+                <div class="show">
+                    <div class="icon">
+                        <img src="./python.png" alt="">
+                        <p>Python</p>
+                    </div>
+                    <div class="icon">
+                        <img src="./javascript.png" alt="">
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="icon">
+                        <img src="./html.png" alt="">
+                        <p>HTML</p>
+                    </div>
+                    <div class="icon">
+                        <img src="./css.png" alt="">
+                        <p>CSS</p>
+                    </div>
+                    <div class="icon">
+                        <img src="./ai.png" alt="">
+                        <p>AI Chatbot development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="art">
+                <h3>Concept Design</h3>
+                <div class="icon">
+                    <H1 style="font-weight: 900; font-size: 50px;">2d</H1>
+                    <p>Animation</p>
+                </div>
+                <div class="icon">
+                    <H1 style="font-weight: 900; font-size: 50px;">3d</H1>
+                    <p>Animation</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="pr" style="display: flex; gap: 28px;">
+                    <div class="first">
+                        <div class="icon">
+                            <img src="./github.png" alt="">
+                        </div>
+                        <div class="icon" style="overflow: hidden; border-radius: 50%;">
+                            <img src="./v.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="second">
+                        <div class="1l">
+                            <h3>Github Repositories</h3>
+                            <ul>
+                                <a href="https://github.com/SOURCE-CODEcommunity/Titobi"><li>https://github.com/SOURCE-CODEcommunity/Titobi</li></a>
+                                <a href="https://github.com/SOURCE-CODEcommunity/whatsapp_chatbot_project"><li>https://github.com/SOURCE-CODEcommunity/whatsapp_chatbot_project</li></a>
+                                <a href="https://github.com/SOURCE-CODEcommunity?tab=repositories"><li>https://github.com/SOURCE-CODEcommunity?tab=repositories</li></a>
+                                <!-- <a href=""><li></li></a> -->
+                            </ul>
+                        </div>
+                        <div class="2l">
+                            <h3>Web Links</h3>
+                            <ul>
+                                <a href="https://source-codecommunity.github.io/Enterprise/home.html"><li>https://source-codecommunity.github.io/Enterprise/home.html</li></a>
+                                <a href="https://our-place-in-the-universe.github.io/Blog/home"><li>https://our-place-in-the-universe.github.io/Blog/home</li></a>
+                                <a href="https://source-codecommunity.github.io/Enterprise/christmas%20project24"><li>https://source-codecommunity.github.io/Enterprise/christmas%20project24</li></a>
+                            </ul>
+                        </div>
+                        <div class="3l">
+                            <h3>Youtube Channel Link</h3>
+                            <ul>
+                                <a href="https://www.youtube.com/@BECREATIVE77377"><li>https://www.youtube.com/@BECREATIVE77377</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              <div class="ar" style="display: flex; gap: 28px;">
+                    
+                </div>  
+        </div>
+
+        <div class="card">
+        <h1>Email</h1>
+        <div><p class="link">adedamolarichard79@gmail.com</p><button class="copybtn" type="button">Copy</button></div>
+        </div>   
+    
+        <div class="main-navigation">
+            <ul>
+                <li>About</li>
+                <li>Skills</li>
+                <li>Project</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let cards = document.querySelectorAll(".cards .card");
+        let nav_btns = document.querySelectorAll(".cards .main-navigation ul li");
+        let copybtn = document.querySelector(".copybtn")
+        let link = document.querySelector(".link")
+        
+
+        nav_btns.forEach((navbtn, i) => {
+            navbtn.onclick = () => {
+                document.querySelector(".cards .card.active").classList.remove("active");
+                
+                cards[i].classList.add("active");
+            }
+        })
+
+        copybtn.onclick = () => {
+            navigator.clipboard.writeText(link.textContent).then(() => {
+                    copybtn.textContent = "Copied";
+                })
+        
+                clearInterval(refreshInterval);
+                refreshInterval = setInterval(() => {
+                copybtn.textContent = "Copy";
+            }  
+            , 3000)
+            
+        }
+
+        refreshInterval = setInterval(() => {
+            copybtn.textContent = "Copy";
+        }, 3000)
+    </script>
+</body>
+</html>
