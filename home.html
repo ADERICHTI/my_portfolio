@@ -3,319 +3,776 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iyiola Adedamola Richard</title>
+    <title>Iyiola Adedamola Richard | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hind+Madurai:wght@300;400;500;600;700&family=Poppins:ital,wght@0,400;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Share+Tech&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-color: rgba(156, 0, 204, 0.8);
+            --secondary-color: rgba(51, 0, 51, 0.8);
+            --glass-color: rgba(255, 255, 255, 0.1);
+            --text-color: #ffffff;
+            --highlight-color: #ffabea;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Poppins, Arial, sans-serif;
-            background: linear-gradient(45deg, rgb(37, 0, 37)5%, rgb(156, 0, 204), rgb(51, 0, 51))5%;
-            height: 97.5vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #250025, #9c00cc, #330033);
+            background-size: 400% 400%;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            background-size: 200%;
-            background-position: 0%;
-            animation: move 30s ease-in-out infinite;
+            color: var(--text-color);
+            animation: gradientBG 15s ease infinite;
+            overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-            color: #ffffff98;
-            transition: .3s ease-in-out;
-        }
-
-        a:hover {
-            color: #fff;
-        }
-
-
-        @keyframes move {
-            50% {
-                background-position: 100%;
-            }
-
-            100% {
-                background-position: 0%;
-            }
-            
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        .cards {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            min-height: 80vh;
+            perspective: 1000px;
         }
-
-        .cards .card {
+        
+        /* Glass Card Styling */
+        .card {
             position: absolute;
-            width: 70%;
-            min-height: 210px;
-            border-radius: 10px;
-            backdrop-filter: blur(28px);
-            padding: 10px;
+            width: 100%;
+            min-height: 60vh;
+            border-radius: 20px;
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: var(--glass-color);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 2rem;
             display: none;
-            gap: 28px;
-            box-shadow: 1px 1px 10px #ffabea8a;
-            background-color: #00000014;
-        }
-
-        .cards .card.active {
-            z-index: 1;
-            display: flex;
-            transform: rotateX(30deg);
-            opacity: .7;
-            filter: blur(.5px);
-            animation: effect001 .7s ease-in-out 1 forwards;
-        }
-
-        @keyframes effect001 {
-            to {
-                transform: rotateX(0deg);
-                opacity: 1;
-                filter: blur(0);
-            }
-        }
-
-        /* .cards .card */
-        
-        .cards .card .image-edge {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
+            flex-direction: column;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            opacity: 0;
+            transform: translateY(20px) rotateX(10deg);
             overflow: hidden;
         }
-
-        .cards .card .image-edge img {
-            width: 100%;
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0)
+            );
+            transform: rotate(30deg);
+            pointer-events: none;
         }
         
-        .cards .main-navigation {
-            position: absolute;
-            top: 7%;
+        .card.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
             z-index: 10;
         }
-
-        .cards .main-navigation ul {
+        
+        /* Navigation */
+        .main-navigation {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: 100%;
             display: flex;
-            gap: 24px;
+            justify-content: center;
+        }
+        
+        .main-navigation ul {
+            display: flex;
+            gap: 1rem;
             list-style: none;
+            background: var(--glass-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .cards .main-navigation ul li {
-            background-color: #bebebe42;
-            padding: 5px;
-            border-radius: 5px;
+        
+        .main-navigation ul li {
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
         
-        .cards .card .show .icon {
-            display: flex;
-            width: 70px;
-        }
-
-        .cards .card .show .icon img {
-            width: 100%;
+        .main-navigation ul li:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
         
-        .cards .card .art .icon {
-            display: flex;
-            width: 105px;
-            gap: 17px;
-        }
-
-        .cards .card .art .icon img {
-            width: 100%;
+        .main-navigation ul li.active {
+            background: var(--primary-color);
+            color: white;
         }
         
-        .cards .card .first .icon {
+        /* About Card */
+        .about-card {
             display: flex;
-            width: 105px;
-            gap: 17px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
         }
-
-        .cards .card .first .icon img {
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-image img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-
-        .link {
-            opacity: .8;
+        
+        .about-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--highlight-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .copybtn {
-            border: 0;
-            border-radius: 5px;
-            padding: 7px;
-            background-color: #aaaaaa50;
-            color: #fff;
+        
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+        
+        /* Skills Card */
+        .skills-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .skills-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skills-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skills-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+        
+        .skill-category {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .skill-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+        
+        .skill-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        /* Projects Card */
+        .projects-card {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-icon img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .project-links {
+            margin-top: 1rem;
+        }
+        
+        .project-link {
+            display: block;
+            color: var(--highlight-color);
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+        
+        .project-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Contact Card */
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--highlight-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .email-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .email-container:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .email-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .copy-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
         }
-        media screen and (max-width: 760px) {
-            p, li {
-                word-wrap: break-word;
+        
+        .copy-btn:hover {
+            background: rgba(156, 0, 204, 0.9);
+            transform: translateY(-2px);
+        }
+        
+        .copy-btn.copied {
+            background: #4CAF50;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                min-height: auto;
+                padding-top: 80px;
+                padding-bottom: 40px;
             }
-
+            
             .card {
-                width: fit-content;
+                min-height: auto;
+                padding: 1.5rem;
             }
-
-            .art .icon {
-                display: block;
+            
+            .main-navigation {
+                top: 20px;
+            }
+            
+            .main-navigation ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 0.5rem;
+            }
+            
+            .main-navigation ul li {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.7rem;
+            }
+            
+            .about-content h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-card {
+                flex-direction: column;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .email-container {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 
-    about me : picture, name, short note
-    skills: programming = languages - html, css, JavaScript, python
-        art: animation - 2d, 3d
-    project: check out GitHub
-            art images
-
-    reachout: email
-    -->
-    <div class="cards">
-
-        <div class="card active">
-            <div class="first">
-                <div class="image-edge">
-                    <img src="./Me 003.jpg" alt="" class="image">
-                </div>
-                <h3>Iyiola Adedamola Richard</h3>
-            </div>
-            <div class="second">
-                <h1>What i do?</h1>
-                <p>I am a programmer(AI dev, desktop app dev, web app dev, mobile app dev), a concept creator, and an animator.</p>
-            </div>
-        </div>
-
-        <div class="card" style="gap: 70px;">
-            <div class="prog">
-                <h3>Programming</h3>
-                <div class="show">
-                    <div class="icon">
-                        <img src="./python.png" alt="">
-                        <p>Python</p>
-                    </div>
-                    <div class="icon">
-                        <img src="./javascript.png" alt="">
-                        <p>JavaScript</p>
-                    </div>
-                    <div class="icon">
-                        <img src="./html.png" alt="">
-                        <p>HTML</p>
-                    </div>
-                    <div class="icon">
-                        <img src="./css.png" alt="">
-                        <p>CSS</p>
-                    </div>
-                    <div class="icon">
-                        <img src="./ai.png" alt="">
-                        <p>AI Chatbot development</p>
-                    </div>
-                </div>
-            </div>
-            <div class="art">
-                <h3>Concept Design</h3>
-                <div class="icon">
-                    <H1 style="font-weight: 900; font-size: 50px;">2d</H1>
-                    <p>Animation</p>
-                </div>
-                <div class="icon">
-                    <H1 style="font-weight: 900; font-size: 50px;">3d</H1>
-                    <p>Animation</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="pr" style="display: flex; gap: 28px;">
-                    <div class="first">
-                        <div class="icon">
-                            <img src="./github.png" alt="">
-                        </div>
-                        <div class="icon" style="overflow: hidden; border-radius: 50%;">
-                            <img src="./v.jpeg" alt="">
-                        </div>
-                    </div>
-                    <div class="second">
-                        <div class="1l">
-                            <h3>Github Repositories</h3>
-                            <ul>
-                                <a href="https://github.com/SOURCE-CODEcommunity/Titobi"><li>https://github.com/SOURCE-CODEcommunity/Titobi</li></a>
-                                <a href="https://github.com/SOURCE-CODEcommunity/whatsapp_chatbot_project"><li>https://github.com/SOURCE-CODEcommunity/whatsapp_chatbot_project</li></a>
-                                <a href="https://github.com/SOURCE-CODEcommunity?tab=repositories"><li>https://github.com/SOURCE-CODEcommunity?tab=repositories</li></a>
-                                <!-- <a href=""><li></li></a> -->
-                            </ul>
-                        </div>
-                        <div class="2l">
-                            <h3>Web Links</h3>
-                            <ul>
-                                <a href="https://source-codecommunity.github.io/Enterprise/home.html"><li>https://source-codecommunity.github.io/Enterprise/home.html</li></a>
-                                <a href="https://our-place-in-the-universe.github.io/Blog/home"><li>https://our-place-in-the-universe.github.io/Blog/home</li></a>
-                                <a href="https://source-codecommunity.github.io/Enterprise/christmas%20project24"><li>https://source-codecommunity.github.io/Enterprise/christmas%20project24</li></a>
-                            </ul>
-                        </div>
-                        <div class="3l">
-                            <h3>Youtube Channel Link</h3>
-                            <ul>
-                                <a href="https://www.youtube.com/@BECREATIVE77377"><li>https://www.youtube.com/@BECREATIVE77377</li></a>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-              <div class="ar" style="display: flex; gap: 28px;">
-                    
-                </div>  
-        </div>
-
-        <div class="card">
-        <h1>Email</h1>
-        <div><p class="link">adedamolarichard79@gmail.com</p><button class="copybtn" type="button">Copy</button></div>
-        </div>   
+    <div class="particles" id="particles"></div>
     
+    <div class="container">
+        <!-- About Card -->
+        <div class="card active" id="about">
+            <div class="about-card">
+                <div class="profile-image floating">
+                    <img src="./Me 003.jpg" alt="Iyiola Adedamola Richard">
+                </div>
+                <div class="about-content">
+                    <h1>Iyiola Adedamola Richard</h1>
+                    <p>
+                        I'm a versatile creative professional specializing in programming (AI development, desktop, web, and mobile applications) 
+                        and animation (2D/3D concept creation). I blend technical expertise with artistic vision to build innovative digital experiences.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Skills Card -->
+        <div class="card" id="skills">
+            <div class="skills-card">
+                <div class="skills-section">
+                    <h2>Programming</h2>
+                    <div class="skill-category">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="./python.png" alt="Python">
+                            </div>
+                            <span class="skill-name">Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="./javascript.png" alt="JavaScript">
+                            </div>
+                            <span class="skill-name">JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="./html.png" alt="HTML">
+                            </div>
+                            <span class="skill-name">HTML</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="./css.png" alt="CSS">
+                            </div>
+                            <span class="skill-name">CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="./ai.png" alt="AI Development">
+                            </div>
+                            <span class="skill-name">AI Development</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-section">
+                    <h2>Concept Design</h2>
+                    <div class="skill-category">
+                        <div class="skill-item">
+                            <div class="skill-icon" style="font-size: 2.5rem; font-weight: 900;">
+                                2D
+                            </div>
+                            <span class="skill-name">Animation</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon" style="font-size: 2.5rem; font-weight: 900;">
+                                3D
+                            </div>
+                            <span class="skill-name">Animation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects Card -->
+        <div class="card" id="projects">
+            <h2 style="margin-bottom: 1.5rem;">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="./github.png" alt="GitHub">
+                        </div>
+                        <h3 class="project-title">GitHub Repositories</h3>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/SOURCE-CODEcommunity/Titobi" class="project-link" target="_blank">
+                            Titobi - AI Project
+                        </a>
+                        <a href="https://github.com/SOURCE-CODEcommunity/whatsapp_chatbot_project" class="project-link" target="_blank">
+                            WhatsApp Chatbot
+                        </a>
+                        <a href="https://github.com/SOURCE-CODEcommunity?tab=repositories" class="project-link" target="_blank">
+                            All Repositories
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="project-title">Web Projects</h3>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://source-codecommunity.github.io/Enterprise/home.html" class="project-link" target="_blank">
+                            Enterprise Website
+                        </a>
+                        <a href="https://our-place-in-the-universe.github.io/Blog/home" class="project-link" target="_blank">
+                            Universe Blog
+                        </a>
+                        <a href="https://source-codecommunity.github.io/Enterprise/christmas%20project24" class="project-link" target="_blank">
+                            Christmas Project
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3 class="project-title">YouTube Channel</h3>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.youtube.com/@BECREATIVE77377" class="project-link" target="_blank">
+                            @BECREATIVE77377
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Card -->
+        <div class="card" id="contact">
+            <div class="contact-card">
+                <h1 class="contact-title">Get In Touch</h1>
+                <p>Feel free to reach out for collaborations or just to say hello!</p>
+                
+                <div class="email-container">
+                    <span class="email-text">adedamolarichard79@gmail.com</span>
+                    <button class="copy-btn" id="copyBtn">
+                        <i class="far fa-copy"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
         <div class="main-navigation">
             <ul>
-                <li>About</li>
-                <li>Skills</li>
-                <li>Project</li>
-                <li>Contact</li>
+                <li class="active" data-target="about">About</li>
+                <li data-target="skills">Skills</li>
+                <li data-target="projects">Projects</li>
+                <li data-target="contact">Contact</li>
             </ul>
         </div>
     </div>
 
     <script>
-        let cards = document.querySelectorAll(".cards .card");
-        let nav_btns = document.querySelectorAll(".cards .main-navigation ul li");
-        let copybtn = document.querySelector(".copybtn")
-        let link = document.querySelector(".link")
+        // Navigation functionality
+        const navItems = document.querySelectorAll('.main-navigation ul li');
+        const cards = document.querySelectorAll('.card');
         
-
-        nav_btns.forEach((navbtn, i) => {
-            navbtn.onclick = () => {
-                document.querySelector(".cards .card.active").classList.remove("active");
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all nav items and cards
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                cards.forEach(card => card.classList.remove('active'));
                 
-                cards[i].classList.add("active");
-            }
-        })
-
-        copybtn.onclick = () => {
-            navigator.clipboard.writeText(link.textContent).then(() => {
-                    copybtn.textContent = "Copied";
-                })
+                // Add active class to clicked nav item
+                item.classList.add('active');
+                
+                // Show corresponding card
+                const target = item.getAttribute('data-target');
+                document.getElementById(target).classList.add('active');
+            });
+        });
         
-                clearInterval(refreshInterval);
-                refreshInterval = setInterval(() => {
-                copybtn.textContent = "Copy";
-            }  
-            , 3000)
+        // Email copy functionality
+        const copyBtn = document.getElementById('copyBtn');
+        const email = 'adedamolarichard79@gmail.com';
+        
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(email).then(() => {
+                copyBtn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+                copyBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="far fa-copy"></i><span>Copy</span>';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+        
+        // Particle background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
             
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 10s and 20s
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
         }
-
-        refreshInterval = setInterval(() => {
-            copybtn.textContent = "Copy";
-        }, 3000)
+        
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+        
+        // Add hover effect to skill items
+        const skillItems = document.querySelectorAll('.skill-item');
+        skillItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0) scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
